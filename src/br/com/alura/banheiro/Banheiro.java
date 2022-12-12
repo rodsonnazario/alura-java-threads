@@ -31,7 +31,7 @@ public class Banheiro {
 				esperaLaFora(nome);
 			}
 			System.out.println(nome + " fazendo numero 2");
-			espera(10000);
+			espera(5000);
 			this.isSujo = true;
 			System.out.println(nome + " lavando as mãos");
 			System.out.println(nome + " saindo do banheiro");
@@ -50,7 +50,7 @@ public class Banheiro {
 			}
 			System.out.println(nome + " limpando o banheiro");
 			isSujo = false;
-			espera(10000);
+			espera(5000);
 			this.notifyAll();
 			System.out.println(nome + " saindo do banheiro");
 		}

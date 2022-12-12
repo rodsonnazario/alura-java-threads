@@ -12,8 +12,8 @@ public class TarefaLimpeza implements Runnable {
 	@Override
 	public void run() {
 		while (true) {
-			banheiro.limpa();
-			espera(10000);
+			this.banheiro.limpa();
+			espera(5000);
 		}
 	}
 
