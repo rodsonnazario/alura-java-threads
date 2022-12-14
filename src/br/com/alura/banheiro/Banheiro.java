@@ -11,10 +11,10 @@ public class Banheiro {
 		synchronized (this) {
 			System.out.println(nome + " entrando no banheiro");
 			while (isSujo) {
-				esperaLaFora(nome);
+				espera(nome);
 			}
 			System.out.println(nome + " fazendo numero 1");
-			espera(5000);
+			dorme(5000);
 			this.isSujo = true;
 			System.out.println(nome + " lavando as mãos");
 			System.out.println(nome + " saindo do banheiro");
@@ -28,10 +28,10 @@ public class Banheiro {
 		synchronized (this) {
 			System.out.println(nome + " entrando no banheiro");
 			while (isSujo) {
-				esperaLaFora(nome);
+				espera(nome);
 			}
 			System.out.println(nome + " fazendo numero 2");
-			espera(5000);
+			dorme(5000);
 			this.isSujo = true;
 			System.out.println(nome + " lavando as mãos");
 			System.out.println(nome + " saindo do banheiro");
@@ -50,13 +50,13 @@ public class Banheiro {
 			}
 			System.out.println(nome + " limpando o banheiro");
 			isSujo = false;
-			espera(5000);
+			dorme(5000);
 			this.notifyAll();
 			System.out.println(nome + " saindo do banheiro");
 		}
 	}
 
-	private void espera(long millis) {
+	private void dorme(long millis) {
 		try {
 			Thread.sleep(millis);
 		} catch (InterruptedException e) {
@@ -64,7 +64,7 @@ public class Banheiro {
 		}
 	}
 
-	private void esperaLaFora(String nome) {
+	private void espera(String nome) {
 		System.out.println(nome + " eca, banheiro está sujo");
 		try {
 			this.wait();

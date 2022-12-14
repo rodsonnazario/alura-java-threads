@@ -13,15 +13,14 @@ public class TarefaLimpeza implements Runnable {
 	public void run() {
 		while (true) {
 			this.banheiro.limpa();
-			espera(5000);
+			dorme(5000);
 		}
 	}
 
-	private void espera(long millis) {
+	private void dorme(long millis) {
 		try {
 			Thread.sleep(millis);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
