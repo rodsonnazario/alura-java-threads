@@ -14,7 +14,7 @@ public class TarefaAdicionaElemento implements Runnable {
 
 	@Override
 	public void run() {
-		for (int i = 0; i < 100; i++) {
+		for (int i = 0; i < Constantes.ELEMENTOS_POR_THREAD; i++) {
 			lista.add("Thread " + numeroDaThread + " - " + i);
 		}
 	}
