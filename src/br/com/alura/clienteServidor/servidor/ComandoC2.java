@@ -14,10 +14,12 @@ public class ComandoC2 implements Runnable {
 	public void run() {
 		System.out.println("Executando comando c2");
 		try {
-			Thread.sleep(10000);
+			Thread.sleep(5000);
 		} catch (InterruptedException e) {
 			throw new RuntimeException(e);
 		}
-		saida.println("Comando c2 executado com sucesso!");
+		
+		throw new RuntimeException("Exception no comando c2");
+//		saida.println("Comando c2 executado com sucesso!");
 	}
 }
