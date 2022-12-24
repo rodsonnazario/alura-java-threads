@@ -3,7 +3,7 @@ package br.com.alura.clienteServidor.experimento;
 public class ServidorDeTeste {
 //	cada threads tera uma cópia (cache), code smell
 //	private boolean estaRodando = false;
-	
+
 //	as threads acessam o mesmo atribudo na memória principal
 	private volatile boolean estaRodando = false;
 
@@ -14,12 +14,15 @@ public class ServidorDeTeste {
 	}
 
 	private void rodar() {
-		new Thread(new Runnable() {
+		Thread thread = new Thread(new Runnable() {
 
 			public void run() {
 				System.out.println("Servidor começando, estaRodando = " + estaRodando);
-
 				while (!estaRodando) {
+				}
+
+				if (estaRodando) {
+					throw new RuntimeException("Deu erro na thread ...");
 				}
 
 				System.out.println("Servidor rodando, estaRodando = " + estaRodando);
@@ -29,7 +32,10 @@ public class ServidorDeTeste {
 
 				System.out.println("Servidor terminando, estaRodando = " + estaRodando);
 			}
-		}).start();
+		});
+		
+		thread.setUncaughtExceptionHandler(new TratadorDeException());
+		thread.start();
 	}
 
 	private void alterandoAtributo() throws InterruptedException {
